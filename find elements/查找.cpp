@@ -1,12 +1,9 @@
 #include <cstdio>
-
-int main() {
-
+int main(){
     int n;
     int m;
     int buf[101];
     int search[101];
-
     while (scanf("%d", &n) != EOF) {
         for (int i = 0; i < n; i++) {
             scanf("%d", &buf[i]);
@@ -27,7 +24,6 @@ int main() {
                 printf("NO\n");
             }
         }
-
     }
     return 0;
 }
