@@ -9,12 +9,13 @@ int main()
         scanf("%d%d%d%d",&y,&m,&d,&n);
         n = n + d;
         while(n){
-            if((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))month[1] = 29;
+                if((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))month[1] = 29;
             if(n > month[m - 1]){
                 n = n - month[m - 1];
                 m = m + 1;
                 if(m == 13){
                     y++;
+                    if((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))month[1] = 29;
                     m = m - 12;
                 }
             }
