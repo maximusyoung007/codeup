@@ -13,20 +13,20 @@
     while(m--){
         scanf("%d%d%d%d",&year,&month,&day,&n);
         leap = 0;
-        if((year%400==0)||(year%4==0&&year%100!=0)){
+        if((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)){
         leap = 1;
         }
         while(n){
         day++;
-        if(day>num[leap][month]){
+        if(day > num[leap][month]){
             day = 1;
             month++;
         }
-        if(month>12){
+        if(month > 12){
             month = 1;
             year++;
             leap = 0;
-        if((year%400==0)||(year%4==0&&year%100!=0)){
+        if((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)){
         leap = 1;
     }
  }
