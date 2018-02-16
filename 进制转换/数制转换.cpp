@@ -1,3 +1,4 @@
+//problem:only can input integer
 #include<cstdio>
 long decimal(long x,long p)//p½øÖÆÊýx
 {
