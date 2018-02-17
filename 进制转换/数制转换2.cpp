@@ -28,10 +28,10 @@ int main(void){
         }
         --i;
         while (i >= 0){
-            putchar (str[i]);
+            putchar(str[i]);
             --i;
         }
-        putchar ('\n');
+        putchar('\n');
     }
    return 0;
 }
