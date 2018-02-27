@@ -1,4 +1,5 @@
-//something wrong in logic,only can work at the first time
+//something wrong in logic,only can work at the first time at 14:12 2018.2.27
+//but now it works
 #include<cstdio>
 int main()
 {
