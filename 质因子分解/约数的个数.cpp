@@ -1,5 +1,6 @@
-//判断m的约数个数:将m开方得n，判断n之前属于m的约数个数num。
-//若n为整数，则m约数个数为2*num-1，否则为num = num + 2
+//judge how many divisor:take the square of m to n
+//judge how many divisor of m before n,and record as num
+//if n is integer ,divisor of m is 2*num-1,else num is 2*num
 #include<cstdio>
 #include<math.h>
 int countn(int n) {
