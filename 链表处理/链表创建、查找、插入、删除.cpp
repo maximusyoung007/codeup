@@ -34,7 +34,7 @@ int Search(node* head,int x)
 }
 void insert(node* head,int pos,int x)
 {
-    node* p =head;
+    node* p = head;
     for(int i = 0;i < pos - 1;i++){
         p = p->next;
     }
