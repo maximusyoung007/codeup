@@ -18,17 +18,18 @@ bool cmp(string str1,string str2)
 int main()
 {
     int n;
-    cin >> n;
     vector<string> a;
     string str;
-    for(int i = 0;i < n;i++){
-        cin >> str;
-        a.push_back(str);
+    while(cin >> n){
+        for(int i = 0;i < n;i++){
+            cin >> str;
+            a.push_back(str);
+        }
+        sort(a.begin(),a.end(),cmp);
+        for(int i = 0;i < n;i++){
+            cout << a[i] << endl;
+        }
+        a.clear();
     }
-    sort(a.begin(),a.end(),cmp);
-    for(int i = 0;i < n;i++){
-        cout << a[i] << '\n';
-    }
-    a.clear();
     return 0;
 }
