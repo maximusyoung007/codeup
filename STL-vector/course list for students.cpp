@@ -1,102 +1,82 @@
-/*first of all,it is a copy*/
-#include<stdio.h>
-#include<string.h>
-#include <stdlib.h>
-#define MaxK 2500
-#define MaxS 200
-#define MaxName 4
-#define MaxHashName 26426
-#define MaxD 10
-typedef struct ListNode *List;
-struct ListNode {
-    int cNo;
-    List Next;
-};
-struct StudentNode {
-    int cnt;
-    List crs, tail;
-}student[MaxHashName][MaxD];
-struct CourseNode{
-    int cnt;
-    int stu[MaxS];
-}course[MaxK];
-void Initialize()
+/**vector
+1.define a vector: vector<typename> name;
+example:vector<int> name;
+        vector<double>name;
+        vector<char> name;
+if typename is vector,then we define vector like it:
+    vector<vector<int> > name;blank is necessary
+define vector array:
+vector<typename> Arrayname[arraysize]
+example vector<int> vi[100]
+2.visit elements
+Access by subscript or access by iterator
+define:vector<typename>::iterator it;
+example:vector<int>::iterator it
+        vector<double>::iterator it
+
+vector<int> vi;
+for(int i = 0;i <= 5;i++)
+    vi.push_back(i)
+vector<int>::iterator it = vi.begin();
+for(int i = 0;i < 5;i++)
+    print("%d ",*(it + i));
+
+vi[i]is equal with *(vi.begin()+i)
+another way to traversal
+for(vector<int>::iterator it = vi.begin();it != vi.end();it++)
+    printf("%d ",*it);
+vector<typename> vi;
+add elements :vi.push_back(i)
+delete the last element : vi.pop_back()
+get the number of elements :vi.size()
+delete all elements :vi.clear()
+add element into some place in vector :vi.insert(vi.begin + 2,-1)add at vi[2]
+delete elements an any position :vi.erase(vi.begin() + 3)
+delete all the elements in the interval :vi.erase(vi.begin() + 1,vi.begin() + 4)
+**/
+#include<iostream>
+#include<cstdio>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int getId(char name[])
 {
-    int i, j;
- for (i = 0; i < MaxHashName; i++)
-    for (j = 0; j < MaxD; j++) {
-        student[i][j].cnt = 0;
-        student[i][j].crs = student[i][j].tail = NULL;
+    int id = 0;
+    for(int i = 0;i < 3;i++){
+        id = id * 26 + (name[i] - 'A');
     }
+    id = id * 10 + (name[3] - '0');
+    return id;
 }
-List NewNode( int cn )
-{
-    List temp;
-    temp = (List)malloc(sizeof(struct ListNode));
-    temp->cNo = cn;
-    temp->Next = NULL;
-    return temp;
-}
-int NameHash( char name[] )
-{
-    int i, j;
-    i = name[0] - 'A';
-    for (j = 1; j < 3; j++)
-        i = (i<<5) + name[j] - 'A';
-    return i;
-}
-void Read_Insert( int N, int K )
-{
-    int i, j, cn, sn1, sn2;
-    char name[MaxName + 1];
-    List tmp;
-    for (i = 0; i < K; i++){
-        scanf("%d", &cn);
-        scanf("%d", &course[cn - 1].cnt);
-        for (j = course[cn - 1].cnt - 1; j >= 0; j--) {
-            scanf("%s", name);
-            course[cn - 1].stu[j] = (NameHash(name)<<5) + name[3] - '0';
-        }
-    }
-    for (i = 0; i < K; i++){
-        for (j = course[i].cnt - 1; j >= 0; j--) {
-            sn2 = course[i].stu[j] % 32;
-            sn1 = course[i].stu[j] >> 5;
-            student[sn1][sn2].cnt ++;
-            tmp = NewNode(i + 1);
-            if (student[sn1][sn2].cnt == 1) {
-                student[sn1][sn2].crs = student[sn1][sn2].tail = tmp;
-            }
-            else {
-                student[sn1][sn2].tail->Next = tmp; student[sn1][sn2].tail = tmp;
-            }
-        }
-    }
-}
-void Output ( int N )
-{
-    int i, j, sn1, sn2;
-    char name[MaxName + 1];
-    for (i = 0; i < N; i++) {
-        scanf("%s", name);
-        printf("%s", name);
-        sn1 = NameHash(name);
-        sn2 = name[3] - '0';
-        printf(" %d", student[sn1][sn2].cnt);
-        student[sn1][sn2].tail = student[sn1][sn2].crs;
-        for (j = student[sn1][sn2].cnt; j > 0; j--) {
-            printf(" %d", student[sn1][sn2].tail->cNo);
-            student[sn1][sn2].tail = student[sn1][sn2].tail->Next;
-        }
-    printf("\n");
-    }
-}
+const int maxnum = 26 * 26 * 26 * 10;
+vector<int> vi[maxnum];
 int main()
 {
-    int N, K;
-    scanf("%d %d", &N, &K);
-    Initialize();
-    Read_Insert(N, K);
-    Output(N);
-    return 0;
+    int stu_num,total_course_num;
+    int course_id,stu_num2;
+    int stu_id;
+    char name[5];
+    scanf("%d%d",&stu_num,&total_course_num);
+    for(int i = 0;i < total_course_num;i++){
+        scanf("%d%d",&course_id,&stu_num2);
+        for(int i = 0;i < stu_num2;i++){
+            scanf("%s",name);
+            stu_id = getId(name);
+            vi[stu_id].push_back(course_id);
+        }
+    }
+    for(int i = 0;i < stu_num;i++){
+        scanf("%s",name);
+        int id = getId(name);
+        sort(vi[id].begin(),vi[id].end());
+        printf("%s %d",name,vi[id].size());
+        for(vector<int>::iterator it = vi[id].begin();it != vi[id].end();it++){
+            printf(" %d",*it);
+        }
+        printf("\n");
+
+    }
 }
+
+
+
