@@ -22,7 +22,7 @@ bool cmp(int a,int b)
 int main()
 {
     int stu_num,course_num;
-    scanf("%d %d\n",&stu_num,&course_num);
+    scanf("%d %d",&stu_num,&course_num);
     int stu_id,course_id;
     int stu_course;
     for(int i = 0;i < stu_num;i++){
@@ -34,7 +34,7 @@ int main()
         }
     }
     for(int i = 1;i <= course_num;i++){
-        printf("%d %d",i,vi[i].size());
+        printf("%d %d\n",i,vi[i].size());
         sort(vi[i].begin(),vi[i].end(),cmp);
         for(int j = 0;j < vi[i].size();j++){
             printf("%s\n",stu_name[vi[i][j]]);
