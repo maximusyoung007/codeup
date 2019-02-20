@@ -83,14 +83,11 @@ int main()
     char s[20];
     while(scanf("%d%s%d",&d,s,&y) != EOF) {
         for (m = 1; m <= 12; m++) {
-            if(strcmp(s,monthName[m]) == 0) {
+            if(strcmp(s,monthName[m]) == 0)
                 break;//将输入字符串与月名比较得出月数
-            }
-        }
-    int days = dValue(d,m,y,1,1,1);
-    printf("%d",days);
-    //printf("%d\n",days);
-    puts(weekName[days % 7]);//将计算后得出的下标用7对其取模，并且保证其为非负数，则该下标极即为答案所对应的下标，输出即可
+    int days = dValue(d,m,y,1,1,1);//元年元月一日是星期一
+    //printf("%d",days);
+    puts(weekName[days % 7]);
     }
     return 0;
 }
