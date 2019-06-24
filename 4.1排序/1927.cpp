@@ -11,7 +11,7 @@ int main()
 {
 
     char a[201];
-    //gets可以接受空格
+    //gets鍙互鎺ュ彈绌烘牸
     while(gets(a)){
         int len = strlen(a);
         sort(a,a+len,cmp);
