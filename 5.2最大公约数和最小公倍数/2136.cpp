@@ -2,7 +2,7 @@
 using namespace std;
 int gcb(int a,int b)
 {
-    return !b ? a :gcb(b,a % b);
+    return !b ? a : gcb(b,a % b);
 }
 int lcm(int a,int b)
 {
