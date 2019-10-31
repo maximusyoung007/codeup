@@ -9,7 +9,7 @@ struct point{
     int x;
     int y;
 }point[5000];
-void fun(int x,int y,int num)
+void DFS(int x,int y,int num)
 {
     if(x == endx && y == endy){
         for(int i = 0;i < num;i++){
@@ -24,7 +24,7 @@ void fun(int x,int y,int num)
     for(int i = 0;i < 4;i++){
         if(a[x + dx[i]][y + dy[i]] == 1 && 1 <= x + dx[i] <= m && 1 <= y + dy[i] <= n){
             a[x][y] = 0;//表示当前这个点已经走过了
-            fun(x+dx[i],y+dy[i],num+1);
+            DFS(x+dx[i],y+dy[i],num+1);
             a[x][y] = 1;
         }
     }
@@ -38,8 +38,9 @@ int main()
             }
         }
         scanf("%d %d %d %d",&startx,&starty,&endx,&endy);
-        fun(startx,starty,0);
+        DFS(startx,starty,0);
         if(has_no_result)
             printf("-1\n");
     }
 }
+
