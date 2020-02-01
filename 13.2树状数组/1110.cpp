@@ -42,10 +42,10 @@ int main()
                     for (int j = a / 100 + 1; j < b / 100; j++)
                         sum += table100[j];
                     //a左边的部分
-					for (int j = a; j <= (a / 100) * 100 + 99; j++)
+                    for (int j = a; j <= (a / 100) * 100 + 99; j++)
                         sum += table[j];
                     //a右边的部分
-					for (int j = (b / 100) * 100; j <= b; j++)
+                    for (int j = (b / 100) * 100; j <= b; j++)
                         sum += table[j];
                 }
                 cout << sum << endl;
